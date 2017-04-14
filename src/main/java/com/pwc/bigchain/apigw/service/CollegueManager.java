@@ -30,6 +30,7 @@ public class CollegueManager {
 		String url = "http://localhost:9999/colleagues/"+name;
 		logger.debug("Url is : - "+url);
 		System.out.println("URL is  : - "+url);
+		@SuppressWarnings("unchecked")
 		List<Colleague> list = restTemplate.getForObject(url, ArrayList.class);
 		System.out.println("List size is : - "+list.size());
 		return list;
