@@ -1,0 +1,22 @@
+server:
+  port: 8089
+  context-path: /api/bigchain/v1
+spring:
+  application:
+    name: bigchain-api-gateway
+  data:
+    mongodb:
+      database: mongo
+bigchain:
+  api:
+    ms:
+      uri: http://localhost:8088/bigchain/api
+    
+logging:
+    level: 
+      org.sppringframework.web: DEBUG
+      com.pwc.bigchain.apigw: DEBUG
+    pattern:
+      console: "%d{yyyy/MM/dd HH:mm:ss} - %msg%n"
+      
+        

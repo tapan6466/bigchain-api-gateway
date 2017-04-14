@@ -26,8 +26,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.pwc.bigchain.app</groupId>
-			<artifactId>bigchain-api-ms</artifactId>
+			<groupId>com.pwc.bigchain.api.model</groupId>
+			<artifactId>bigchain-model</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>

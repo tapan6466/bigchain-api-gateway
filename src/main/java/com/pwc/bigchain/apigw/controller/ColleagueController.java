@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.bigchain.api.model.Colleague;
 import com.pwc.bigchain.apigw.service.CollegueManager;
-import com.pwc.bigchain.app.entity.Colleague;
 
 
 
@@ -23,7 +23,6 @@ import com.pwc.bigchain.app.entity.Colleague;
  *
  */
 @Controller
-@RequestMapping("/api/bigchain/v1")
 public class ColleagueController {
 	@Autowired
 	CollegueManager colleagueManager;

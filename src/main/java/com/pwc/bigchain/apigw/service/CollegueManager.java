@@ -6,15 +6,14 @@ package com.pwc.bigchain.apigw.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.ws.Response;
-
-import org.apache.http.HttpResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.pwc.bigchain.app.entity.Colleague;
+import com.bigchain.api.model.Colleague;
+
 
 /**
  * @author lokeshk025
@@ -25,9 +24,15 @@ public class CollegueManager {
 	private static  Logger logger = Logger.getLogger(CollegueManager.class);
 	@Autowired
 	private RestTemplate restTemplate;
+	@Autowired
+	Environment environment;
+	public String getURI()
+	{
+		return environment.getProperty("bigchain.api.ms.uri");
+	}
 	public List<Colleague> getColleaguesByName(String name)
 	{
-		String url = "http://localhost:9999/colleagues/"+name;
+		String url ="http://localhost:8088/bigchain/api/colleagues/"+name;
 		logger.debug("Url is : - "+url);
 		System.out.println("URL is  : - "+url);
 		@SuppressWarnings("unchecked")

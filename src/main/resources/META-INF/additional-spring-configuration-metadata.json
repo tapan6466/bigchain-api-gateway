@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "bigchain.api.ms.uri",
+  "type": "java.lang.String",
+  "description": "A description for 'bigchain.api.ms.uri'"
+}]}
