@@ -32,7 +32,7 @@ public class CollegueManager {
 	}
 	public List<Colleague> getColleaguesByName(String name)
 	{
-		String url ="http://localhost:8088/bigchain/api/colleagues/"+name;
+		String url =getURI()+"/colleagues/"+name;
 		logger.debug("Url is : - "+url);
 		System.out.println("URL is  : - "+url);
 		@SuppressWarnings("unchecked")
