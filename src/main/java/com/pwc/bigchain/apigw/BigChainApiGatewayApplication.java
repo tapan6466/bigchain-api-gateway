@@ -1,10 +1,14 @@
 package com.pwc.bigchain.apigw;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 
 import com.pwc.bigchain.apigw.common.annotations.Microservice;
 
 @Microservice
+@EnableCircuitBreaker
+@EnableHystrixDashboard 
 //@EnableZuulProxy
 //@RibbonClient(name = "bigchain-api-gateway-service", configuration = RibbonServiceConfiguration.class)
 public class BigChainApiGatewayApplication {

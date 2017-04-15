@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.bigchain.api.model.Colleague;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 
 /**
@@ -30,6 +31,7 @@ public class CollegueManager {
 	{
 		return environment.getProperty("bigchain.api.ms.uri");
 	}
+	@HystrixCommand(fallbackMethod = "defaultColleaguesByName")
 	public List<Colleague> getColleaguesByName(String name)
 	{
 		String url =getURI()+"/colleagues/"+name;
@@ -42,5 +44,9 @@ public class CollegueManager {
 		
 		
 	}
-
+	 private List<Colleague> defaultColleaguesByName(String name) {
+		List x = new ArrayList();
+		 x.add("Service is down right now!");
+	        return x;
+	    }
 }
