@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bigchain.api.model.Colleague;
 import com.pwc.bigchain.apigw.service.CollegueManager;
 
-
-
 /**
  * @author lokeshk025
  *
@@ -25,13 +23,16 @@ import com.pwc.bigchain.apigw.service.CollegueManager;
 public class ColleagueController {
 	@Autowired
 	CollegueManager colleagueManager;
+
+	/**
+	 * @param name
+	 * @return
+	 */
 	@GetMapping("/get/{name}")
-	public ResponseEntity<List<Colleague>> getColleagues(@PathVariable("name")String name)
-	{
+	public ResponseEntity<List<Colleague>> getColleagues(@PathVariable("name") String name) {
 		List<Colleague> list = colleagueManager.getColleaguesByName(name);
 		return new ResponseEntity<>(list, HttpStatus.OK);
-		
-		
+
 	}
 
 }

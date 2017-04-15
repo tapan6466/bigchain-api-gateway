@@ -15,39 +15,49 @@ import org.springframework.web.client.RestTemplate;
 import com.bigchain.api.model.Colleague;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
-
 /**
  * @author lokeshk025
  *
  */
 @Service
 public class CollegueManager {
-	private static  Logger logger = Logger.getLogger(CollegueManager.class);
+	private static Logger logger = Logger.getLogger(CollegueManager.class);
 	@Autowired
 	private RestTemplate restTemplate;
 	@Autowired
 	Environment environment;
-	public String getURI()
-	{
+
+	/**
+	 * @return
+	 */
+	public String getURI() {
 		return environment.getProperty("bigchain.api.ms.uri");
 	}
+
+	/**
+	 * @param name
+	 * @return
+	 */
 	@HystrixCommand(fallbackMethod = "defaultColleaguesByName")
-	public List<Colleague> getColleaguesByName(String name)
-	{
-		String url =getURI()+"/colleagues/"+name;
-		logger.debug("Url is : - "+url);
-		System.out.println("URL is  : - "+url);
+	public List<Colleague> getColleaguesByName(String name) {
+		String url = getURI() + "/colleagues/" + name;
+		logger.debug("Url is : - " + url);
+		System.out.println("URL is  : - " + url);
 		@SuppressWarnings("unchecked")
 		List<Colleague> list = restTemplate.getForObject(url, ArrayList.class);
-		System.out.println("List size is : - "+list.size());
+		System.out.println("List size is : - " + list.size());
 		return list;
-		
-		
+
 	}
-	 @SuppressWarnings({ "rawtypes", "unchecked", "unused" })
+
+	/**
+	 * @param name
+	 * @return
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked", "unused" })
 	private List<Colleague> defaultColleaguesByName(String name) {
 		List x = new ArrayList();
-		 x.add("Service is down right now!");
-	        return x;
-	    }
+		x.add("Service is down right now!");
+		return x;
+	}
 }
