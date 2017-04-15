@@ -44,7 +44,8 @@ public class CollegueManager {
 		
 		
 	}
-	 private List<Colleague> defaultColleaguesByName(String name) {
+	 @SuppressWarnings({ "rawtypes", "unchecked", "unused" })
+	private List<Colleague> defaultColleaguesByName(String name) {
 		List x = new ArrayList();
 		 x.add("Service is down right now!");
 	        return x;
